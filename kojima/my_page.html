@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>コジマダイの自己紹介</title>
+    <meta charset="utf-8">
+    <link href="mypage.css" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <h1>kojimaのページ</h1>
+        <div class="Header">
+            <p class="subj">自己紹介</p>
+            <p class="link"><a href="../home.html">ホームに戻る</a></p>
+        </div>
+        <div class="hamburger" id="open_nav">
+            <img src="hamburger.png" alt="">
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div id="apps">
+                <h2>基本情報</h2>
+                <h5>
+                    名前：小島 大<br>
+                    学校：東京理科大学 工学部 電気工学科<br>
+                    所属サークル:Airou<br>
+                    趣味：げーーむ(R6S)<br>
+                </h5>
+
+                <h2>プログラミングについて</h2>
+
+                <h4 v-on:click="shows_1=!shows_1">C++</h4>
+                <transition>
+                    <p v-if="shows_1">
+                        競プロで使ってます。基本的なコードは書ける程度。<br>
+                        競プロの色は茶色です。<br>
+                    </p>
+                </transition>
+
+                <h4 v-on:click="shows_2=!shows_2">C#</h4>
+                <transition>
+                    <p v-if="shows_2">unityでげーーむを作ってたことがあります。</p>
+                </transition>
+
+                <h4 v-on:click="shows_3=!shows_3">GO</h4>
+                <transition>
+                    <p v-if="shows_3">最近始めました。バックエンドエンジニアを目指して頑張ります。</p>
+                </transition>
+
+                <h4 v-on:click="shows_4=!shows_4">java script</h4>
+                <transition>
+                    <p v-if="shows_4">理大祭のサイト開発に向けて頑張ります！</p>
+                </transition>
+
+                <p>
+                    AtCoder : <a id="atcoder_rating" target="_blank" style="text-decoration:none;font-weight:bold;">loading</a><br>
+                   
+                </p>
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+
+
+    </main>
+    <footer class="footer">
+        <div class="container_1">
+            <p>kojimaの自己紹介</p>
+            <ul>
+                <li><a href="../home.html">ホームに戻る</a></li>
+                外部リンク
+                <li><a href="https://www.tus.ac.jp/">東京理科大学</a></li>
+                <li><a href="../kumasan/my_page.html">kumasanのページ</a></li>
+            </ul>
+        </div><!-- /.container -->
+    </footer>
+
+
+    <nav id="nav">
+        <h1>menu</h1>
+        <ul>
+            <li><a href="../home.html">Home</a></li>
+            <li><a href="my_page.html">kumasan's portfolio(this page)</a></li>
+            <li><a href="my_page2.html">kumasan's portfolio2</a></li>
+            <li><a href="../kojima/my_page.html">kojima's portfolio</a></li>
+            <li><a href="../pon/my_page.html">pon's portfolio</a></li>
+            <li><a href="../neo/my_page.html">neo's portfolio</a></li>
+        </ul>
+    </nav>
+
+    <script src="vue.js"></script>
+    <script src="mypage.js"></script>
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script>
+        'use strict';
+
+        $(document).ready(function () {
+            $('.submenu h3').on('click', function () {
+                $(this).next().toggleClass('hidden');
+            });
+        });
+        $(document).ready(function () {
+            $('#open_nav').on('click', function () {
+                $('.hamburger,#nav').toggleClass('show');
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        (function () {
+            class User {
+                constructor(service, handle) {
+                    this.service = service;
+                    this.handle = handle;
+                    this.rating = 0;
+                    this.color = '#000';  // デフォルトの色
+                }
+            }
+            class Service {
+                constructor(name, url) {
+                    this.name = name;
+                    this.url = url;
+                }
+            }
+
+            let atcoder = new Service('atcoder', 'https://atcoder.jp/user/');
+            let codeforces = new Service('codeforces', 'http://codeforces.com/profile/');
+            let topcoder_algorithm = new Service('topcoder_algorithm', 'https://www.topcoder.com/members/');
+
+            let atcoder_user = new User(atcoder, 'daipenguin');
+        
+            let accounts = [atcoder_user];
+
+            // ユーザーページへのリンクのみ
+            function set_html_without_rating(user) {
+                let a = document.getElementById(user.service.name + '_rating');
+                a.href = user.service.url + user.handle;
+                a.innerHTML = user.handle;
+                a.setAttribute('style', 'text-decoration:none;font-weight:bold;color:' + user.color);
+            }
+            // ユーザーページへのリンク + レーティング表示 + 色
+            function set_html(user) {
+                let a = document.getElementById(user.service.name + '_rating');
+                a.href = user.service.url + user.handle;
+                a.innerHTML = user.handle + ' (' + user.rating.toString() + ')';
+                a.setAttribute('style', 'text-decoration:none;font-weight:bold;color:' + user.color);
+            }
+
+            function fetch_ratings() {
+                let query_str = '';
+                accounts.forEach(user => {
+                    query_str += user.service.name + "=" + user.handle + '&';
+                });
+
+                function error() {
+                    accounts.forEach(user => set_html_without_rating(user));
+                }
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', 'https://kyopro-ratings.herokuapp.com/json?' + query_str, true);
+                xhr.onload = function (e) {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            json = JSON.parse(xhr.responseText);
+                            // console.log(json);
+                            if ('error' in json) {
+                                error();
+                            } else {
+                                accounts.forEach(user => {
+                                    let service_name = user.service.name;
+                                    if (json[service_name]['status'] == 'success') {
+                                        user.rating = json[service_name]['rating'];
+                                        user.color = json[service_name]['color'];
+                                        set_html(user);
+                                    } else {
+                                        set_html_without_rating(user);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                };
+                xhr.onerror = function (e) { error(); };
+                xhr.ontimeout = function (e) { error(); };
+                xhr.timeout = 10000;
+                xhr.send(null);
+            }
+            fetch_ratings();
+        })();
+    </script>
+
+</body>
+
+</html>

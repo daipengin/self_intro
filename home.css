@@ -1,0 +1,147 @@
+.container {
+  max-width: auto;
+  margin: 0;
+  padding-bottom: 15px;
+}
+body {
+  margin: 0;
+  font-family: "M PLUS 1p", sans-serif;
+  background-color: #000;
+  height: max-content;
+  background-image: url(https://cdn.pixabay.com/photo/2015/12/04/14/05/code-1076536__480.jpg);
+  background-size: cover;
+  /*display: flex;
+  flex-direction: column;*/
+}
+
+header {
+  border-bottom: #ead963 6px solid;
+  background-image: url(https://media.istockphoto.com/photos/wood-texture-background-light-weathered-rustic-oak-faded-wooden-picture-id1063376706?b=1&k=6&m=1063376706&s=170667a&w=0&h=gtGW8O2DgfQVpU-CyzfEUdO7upeG_vacwX4QJpgoqjo=);
+  background-size: cover;
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+}
+.title-block {
+  flex: 1 1 auto;
+}
+.hamburger {
+  flex:0px 0px 32px;
+  align-self: center;
+  margin-left: 16px;
+  text-align: center;
+  color: #fff;
+  padding: 10px;
+}
+img {
+  max-width: 100%;
+}
+header .link {
+  list-style: none;
+  text-align: right;
+  padding-right: 10px;
+}
+header .container h1,
+header .container h2 {
+  margin: 0;
+  color: white;
+  line-height: 1;
+  padding: 10px 0 5px 10px;
+  margin: 5px;
+}
+header .container h2 {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+main {
+  height: 600px;
+}
+main h3 {
+  font-size: 30px;
+  color: brown;
+  padding: 10px;
+}
+main b {
+  font-size: 30px;
+  font-family: "Times New Roman", Times, serif;
+  padding: 10px;
+}
+.contents-item {
+    float: left;
+    margin-right: 40px;
+}
+img {
+  height: 100px;
+  padding-left: 30px;
+  padding-bottom: 5px;
+}
+footer {
+  height: auto;
+  background-image: url(https://media.istockphoto.com/photos/wood-texture-background-light-weathered-rustic-oak-faded-wooden-picture-id1063376706?b=1&k=6&m=1063376706&s=170667a&w=0&h=gtGW8O2DgfQVpU-CyzfEUdO7upeG_vacwX4QJpgoqjo=);
+  background-size: cover;
+}
+footer p,
+ul {
+  color: aliceblue;
+  text-align: right;
+  padding: 10px;
+}
+footer li {
+  list-style: none;
+}
+footer .container li a {
+  color: blueviolet;
+  text-decoration: none;
+  text-align: right;
+}
+footer .container li a:hover {
+  color: coral;
+  text-decoration: underline;
+}
+a {
+  color: aqua;
+  text-decoration: none;
+  padding: 10px 3px;
+}
+a:hover {
+  color: coral;
+  text-decoration: underline;
+}
+#nav {
+  position: fixed;
+  right: -300px;
+  top: 0;
+  width: 250px;
+  height: 100%;
+}
+.show {
+  transform: translate3d(-300px, 0, 0);
+}
+
+#nav,
+.hamburger {
+  transition: transform 0.5s;
+}
+
+#nav {
+  padding: 24px 24px 0 24px;
+  background: #000;
+  color: white;
+}
+#nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#nav li a {
+  display: block;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #0e3e4d;
+  text-decoration: none;
+  color: #fff;
+}
+#nav li a:hover {
+  background: #0e3e4d;
+}

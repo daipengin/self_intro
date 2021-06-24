@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="Shift-JIS">
+    <title>Vue.js App</title>
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+    <div id="apps">
+        my name is kojima<br>
+
+        <p>{{ messages }}</p>
+
+        <p>{{ messagee }}</p>
+        <input v-model="messagee">
+
+        <p v-if="show">Hello Vue.js!</p>
+
+        <ol>
+            <li v-for="item in list">{{ item }}</li>
+        </ol>
+
+        <button v-on:click="handleClick">Click</button>
+
+        <button v-on:click="shows=!shows">切り替え</button>
+
+        <transition>
+            <p v-if="shows">Hello Vue.js!</p>
+        </transition>
+
+        <p>{{ message.value }}</p>
+        <p>{{ message.value.length }}</p> <p>{{ list[2] }}</p>
+        <p>{{ list[num] }}</p>
+
+    </div>
+   
+
+    
+
+   
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="vue.js"></script>
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
+
+
+</body>
+</html>

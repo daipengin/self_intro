@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTMLの練習</title>
+    <link href="home.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class='container'>
+        <div class="title-block">
+        <h1>ホームページ</h1>
+        <h2>airou's portfolio</h2>
+        </div>
+        <div class="hamburger" id="open_nav">
+            <img src="kumasan/hamburger.png" alt="">
+        </div>
+    </div>
+</header>
+<main>
+    <h3>airou所属メンバー</h3>
+    <div class="container-item">
+        <a href="kojima/my_page.html">
+            <img src="kojima's picture.png">
+            <b>kojima</b>
+        </a><br>
+    </div>
+
+    <div class="container-item">
+        <a href="kumasan/my_page.html">
+            <img src="kumasan's picture.png">
+            <b>kumasan</b>
+        </a>
+    </div>
+    <div class="container-item">
+        <a href="pon/my_page.html">
+            <img src="pon's picture.jpg">
+            <b>pon</b>
+        </a><br>
+    </div>
+    <div class="container-item">
+        <a href="neo/my_page.html">
+            <img src="neo/img/animal_chara_judo_gorilla.png">
+            <b>neo</b>
+        </a><br>
+    </div>
+</main>
+<footer>
+    <div class="container">
+    <p>ホームページ</p>
+    <ul>外部リンク
+        <li><a href="https://www.tus.ac.jp/">東京理科大学</a></li>
+    </ul>
+    </div><!-- /.container -->
+</footer>
+<nav id="nav">
+    <h1>menu</h1>
+    <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="kumasan/my_page.html">kumasan's portfolio</a></li>
+        <li><a href="kumasan/my_page2.html">kumasan's portfolio2</a></li>
+        <li><a href="kojima/my_page.html">kojima's portfolio</a></li>
+        <li><a href="pon/my_page.html">pon's portfolio</a></li>
+        <li><a href="neo/my_page.html">neo's portfolio</a></li>
+    </ul>
+</nav>
+<script src="kumasan/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#open_nav').on('click', function() {
+        $('.hamburger,#nav').toggleClass('show');
+    });
+});
+</script>  
+</body>
+
+</html>
