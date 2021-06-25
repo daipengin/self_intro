@@ -3,45 +3,13 @@
     padding: 0px;
 }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 16px;
-    line-height: 2;
-    color : saddlebrown
-
-}
-
-.container h5{
-    line-height:1.5;
-}
-
-.container h4{
-    line-height:1.5;
-}
-.container h2{
-    line-height:3;
-}
-
-body {
-    margin: 0px;
-    padding: 0px;
-    background-image: url(haikei.jpg);
-    background-size: 2000px;
-    min-height: 100vh;
-    position: relative; /*←相対位置*/
-    padding-bottom: 120px; /*←footerの高さ*/
-    box-sizing: border-box; /*←全て含めてmin-height:100vhに*/
-    
-}
-
+/*////////////////////////////////ヘッダーに関して/////////////////////////////// /*/
 header {
-
     background-color: moccasin;
     border-bottom: #ead963 6px solid;
 }
 
-    header  h1 {
+    header h1 {
         color: black;
         line-height: 2;
     }
@@ -53,26 +21,176 @@ header {
         max-width: 1000px;
         margin: 0 auto;
     }
+
     header p {
         min-height: 50px;
-
         font-size: 15px;
         max-width: 1000px;
         margin: 0 auto;
     }
+
     header .subj {
         font-size: 25px;
         list-style: none;
         text-align: left;
-       
         float: left;
         margin: 0px;
     }
+
     header .link {
         list-style: none;
         text-align: right;
         padding-right: 10px;
     }
+
+.Header {
+    display: flex;
+}
+
+/*////////////////////////ハンバーガーに関して/////////////////////////////// /*/
+
+
+.menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background-color: #3584bb;
+}
+
+    .menu-btn span,
+    .menu-btn span:before,
+    .menu-btn span:after {
+        content: '';
+        display: block;
+        height: 3px;
+        width: 25px;
+        border-radius: 3px;
+        background-color: #ffffff;
+        position: absolute;
+    }
+
+        .menu-btn span:before {
+            bottom: 8px;
+        }
+
+        .menu-btn span:after {
+            top: 8px;
+        }
+
+#menu-btn-check:checked ~ .menu-btn span {
+    background-color: rgba(255, 255, 255, 0); /*メニューオープン時は真ん中の線を透明にする*/
+}
+
+    #menu-btn-check:checked ~ .menu-btn span::before {
+        bottom: 0;
+        transform: rotate(45deg);
+    }
+
+    #menu-btn-check:checked ~ .menu-btn span::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+#menu-btn-check {
+    display: none;
+}
+
+
+.menu-content {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    position: fixed;
+    top: 0;
+    right:-500px; 
+    
+    z-index: 80;
+    background-color: #3584bb;
+    transition: all 0.5s; /*アニメーション設定*/
+}
+    .menu-content ul {
+        padding: 70px 10px 0;
+    }
+
+        .menu-content ul li {
+            border-bottom: solid 1px #ffffff;
+            list-style: none;
+        }
+
+            .menu-content ul li a {
+                display: block;
+                width: 100%;
+                font-size: 15px;
+                box-sizing: border-box;
+                color: #ffffff;
+                text-decoration: none;
+                padding: 9px 15px 10px 0;
+                position: relative;
+            }
+
+                .menu-content ul li a::before {
+                    content: "";
+                    width: 7px;
+                    height: 7px;
+                    border-top: solid 2px #ffffff;
+                    border-right: solid 2px #ffffff;
+                    transform: rotate(45deg);
+                    position: absolute;
+                    right: 11px;
+                    top: 16px;
+                }
+
+
+
+
+#menu-btn-check:checked ~ .menu-content {
+    right: 0; /*メニューを画面内へ*/
+}
+
+
+
+
+/*/ ///////////////////////////////ボディに関して/////////////////////////////// /*/
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px;
+    line-height: 2;
+    color: saddlebrown
+}
+
+    .container h5 {
+        line-height: 1.5;
+    }
+
+    .container h4 {
+        line-height: 1.5;
+    }
+
+    .container h2 {
+        line-height: 3;
+    }
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-image: url(haikei.jpg);
+    background-size: 2000px;
+    min-height: 100vh;
+    position: relative; /*←相対位置*/
+    padding-bottom: 120px; /*←footerの高さ*/
+    box-sizing: border-box; /*←全て含めてmin-height:100vhに*/
+}
+
+
+
+/*////////////////////////////////フッターに関して////////////////////////////////*/
 footer {
     /*max-width: 2000px;*/
     margin: 0;
@@ -84,76 +202,19 @@ footer {
         min-height: 50px;
         padding-top: 10px;
         padding-bottom: 10px;
+        padding-right: 10px;
         color: #000;
         font-size: 12px;
         text-align: right;
-        max-width: 1000px;
-        
-  
     }
 
-footer li {
-    list-style: none;
-
-}
-.footer {
-
-    width: 100%;
-    height: auto;
-    
-    position: absolute;
-    bottom: 0;
-}
-
-.hamburger {
-    flex: 0 0 32px;
-    align-self: center;
-    margin-left: 16px;
-    text-align: center;
-    color: #fff;
-    padding: 10px;
-}
-
-/*navについて*/
-#nav {
-    position: fixed;
-    right: -300px;
-    top: 0;
-    width: 250px;
-    height: 100%;
-}
-
-.show {
-    transform: translate3d(-300px, 0, 0);
-}
-
-#nav,
-.hamburger {
-    transition: transform 0.5s;
-}
-
-#nav {
-    padding: 24px 24px 0 24px;
-    background: #000;
-    color: white;
-}
-
-    #nav ul {
-        margin: 0;
-        padding: 0;
+    footer li {
         list-style: none;
     }
 
-    #nav li a {
-        display: block;
-        padding: 0.75rem 0;
-        border-bottom: 1px solid #0e3e4d;
-        text-decoration: none;
-        color: #fff;
-    }
-
-        #nav li a:hover {
-            background: #0e3e4d;
-        }
-
-
+.footer {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+}
